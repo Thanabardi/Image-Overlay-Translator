@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Image Overlay Translator",
+  "description": "Translate an image text on overlay",
+  "version": "0.1",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "all_frames": true,
+    "js": ["injectImage.js", "elementSelector.js"]
+  }],
+  "background": {
+    "service_worker": "translate.js",
+    "type": "module"
+  },
+  "host_permissions": [
+    "https://some-random-api.ml/*",
+    "https://translate.google.com/*"
+  ]
+}
